@@ -23,7 +23,7 @@ export default function Home(props) {
   stories.map((story, index) => {
     views.push(
       <a style={{textDecoration: 'none', color: "white"}} href={`${story.data.now[0].links.web.href}`} target="_blank">
-        <div style={ (index === counter) ? {height: '90%', width: '550px', paddingTop: '40px', paddingBottom: '40px', zIndex: 1} : { opacity: 0.4,  height: '70%', width: '400px'} }>
+        <div style={ (index === counter) ? {height: '90%', width: '550px', paddingTop: '40px', paddingBottom: '40px', zIndex: 1} : { opacity: 0.9,  height: '70%', width: '400px'} }>
         <Tilt className="Tilt" options={{ max : 25 }} style={{ height: '100%', width: '100%' }} >
             <Paper  style={{backgroundImage: `url(${story.data.now[0].images[0].url})`, height: '400', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>
               <div style={{height: '400px', color: 'white', display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}>
