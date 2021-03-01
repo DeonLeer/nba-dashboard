@@ -13,7 +13,6 @@ Install dependencies with `npm install` in both react-front-end and express-back
 Server: `http://localhost:8000/`
 
 ## Dependencies
-Front end:
 -material-ui/core
 -material-ui/data-grid
 -material-ui/icons
@@ -29,7 +28,6 @@ Front end:
 -react-transition-group
 -scss
 
-Back end:
 -body-parser
 -express
 -nodemon
