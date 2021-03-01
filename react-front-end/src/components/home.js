@@ -15,6 +15,7 @@ import './home.css'
 export default function Home(props) {
 
   const stories = [props.news.feed[0], props.news.feed[1], props.news.feed[2]];
+  console.log(stories)
 
   const views = [];
 
@@ -23,11 +24,11 @@ export default function Home(props) {
   stories.map((story, index) => {
     views.push(
       <a style={{textDecoration: 'none', color: "white"}} href={`${story.data.now[0].links.web.href}`} target="_blank">
-        <div style={ (index === counter) ? {height: '90%', width: '550px', paddingTop: '40px', paddingBottom: '40px', zIndex: 1} : { opacity: 0.9,  height: '70%', width: '400px'} }>
+        <div style={ (index === counter) ? {height: '90%', width: '550px', paddingTop: '40px', paddingBottom: '40px', zIndex: 1} : { opacity: 1,  height: '70%', width: '400px'} }>
         <Tilt className="Tilt" options={{ max : 25 }} style={{ height: '100%', width: '100%' }} >
             <Paper  style={{backgroundImage: `url(${story.data.now[0].images[0].url})`, height: '400', backgroundSize: '100% 100%', backgroundRepeat: 'no-repeat'}}>
               <div style={{height: '400px', color: 'white', display: 'flex', flexDirection: 'row', alignItems: 'flex-end'}}>
-                <p style={{backgroundColor: `rgba(108, 122, 137, 0.7)`, fontWeight: 'bold', padding: '10px 10px', display: 'flex', alignContent: 'center'}}>{story.data.now[0].description}</p>
+                <p style={{backgroundColor: `rgba(108, 122, 137, 0.7)`, fontWeight: 'bold', padding: '10px 10px', display: 'flex', alignContent: 'center'}}>{(story.data.now[0].description) ? (story.data.now[0].description) : (story.data.now[0].headline)}</p>
               </div>
             </Paper>
         </Tilt>
@@ -38,7 +39,9 @@ export default function Home(props) {
 
   const view = views[counter];
   const prevView = views[counter === 0 ? (views.length - 1) : (counter - 1)];
-  const nextView = views[(counter + 1) % (views.length - 1)];
+  const nextView = views[counter === 2 ? 0 : (counter + 1)];
+
+  console.log(views)
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -96,7 +99,7 @@ export default function Home(props) {
 
       <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: 'white', marginTop: 17}}>
         <CSSTransition in={counter} appear timeout={2500} classNames="fade">
-          <div  style={{opacity: 0.4}}>{prevView}</div>
+          <div  style={{opacity: 0.7}}>{prevView}</div>
         </CSSTransition>
         <ChevronLeftIcon onClick={() => setCounter(counter === 0 ? (views.length - 1) : (counter - 1))} style={{fontSize: '50px', marginRight: '40px', marginLeft: '20px', backgroundColor: '#242428', color: 'white', borderRadius: '90px', zIndex: 1, cursor: 'pointer'}}></ChevronLeftIcon>
         <CSSTransition in={counter} appear timeout={2500} classNames="fade">
@@ -104,7 +107,7 @@ export default function Home(props) {
         </CSSTransition>
         <ChevronRightIcon onClick={() => setCounter((counter + 1) % views.length)} style={{fontSize: '50px', marginLeft: '40px', marginRight: '20px', backgroundColor: '#242428', color: 'white', borderRadius: '90px', zIndex: 1, cursor: 'pointer'}}></ChevronRightIcon>
         <CSSTransition in={counter} appear timeout={2500} classNames="fade">
-          <div style={{opacity: 0.4}}>{nextView}</div>
+          <div style={{opacity: 0.7}}>{nextView}</div>
         </CSSTransition>
       </div>
 

@@ -145,8 +145,9 @@ export default function Navbar() {
 
   const d = new Date().toLocaleString("en-US", {timeZone: "America/Los_Angeles"});
   const months = {'1': "Jan", '2': "Feb", '3': "Mar", '4': "Apr", '5': "May", '6': "Jun", '7': "Jul", '8': "Aug", '9': "Sep", '10': "Oct", '11': "Nov", '12': "Dec",}
-  const currentDay = d.substring(2,4);
-  const currentYear = d.substring(5, 9);
+  console.log(d)
+  const currentDay = d.substring(2,3);
+  const currentYear = d.substring(4, 8);
   const monthString = d.substring(0,1);
   const currentMonth = months[monthString];
 
